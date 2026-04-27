@@ -253,7 +253,7 @@ function Hero() {
         </h1>
 
         <div className={`mt-6 flex flex-wrap gap-2 transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          {['Flutter & Android', 'Node.js & NestJS', 'PostgreSQL & MongoDB'].map(t => (
+          {['Flutter & Android', 'Node.js & NestJS', 'PostgreSQL & MongoDB', 'Clean Architecture & MVVM'].map(t => (
             <Badge key={t}>{t}</Badge>
           ))}
         </div>
@@ -272,7 +272,7 @@ function Hero() {
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Mail size={16} />
-            Copy email
+            prakashkeshari764@gmail.com
           </button>
           <button
             type="button"
@@ -280,7 +280,7 @@ function Hero() {
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Smartphone size={16} />
-            Copy mobile
+            +91 7042750794
           </button>
         </div>
       </div>
@@ -537,6 +537,8 @@ function Contact() {
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="mailto:prakashkeshari764@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 bg-accent text-ink px-7 py-3.5 font-display font-semibold text-sm rounded-sm hover:bg-paper transition-colors duration-200"
           >
             <Mail size={16} />
