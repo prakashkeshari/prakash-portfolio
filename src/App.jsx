@@ -471,8 +471,8 @@ function About() {
   const [ref, visible] = useVisible()
   return (
     <section id="about" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-16 items-center">
+        <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'} md:col-span-1`}>
           <SectionLabel>About Me</SectionLabel>
           <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
             Senior Flutter<br /><span className="text-accent">Developer</span>
@@ -493,7 +493,7 @@ function About() {
           </div>
         </div>
 
-        <div className={`transition-all duration-600 delay-200 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+        <div className={`transition-all duration-600 delay-200 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} md:col-span-2`}>
           <div className="bg-surface border border-white/5 rounded-sm p-8">
             <p className="font-mono text-xs text-accent mb-6 tracking-widest">CORE STRENGTHS</p>
             {[
@@ -503,7 +503,8 @@ function About() {
               ['State Management', 'BLoC, GetX, Cubit, Provider, Riverpod'],
               ['APIs', 'GraphQL, REST, WebSockets, Node.js, NestJS'],
               ['Persistence', 'Realm, Hive, SQLite, Room'],
-              ['CI/CD', 'CodeMagic, Testing, Release Pipelines'],
+              ['Architecture', 'Clean Architecture, MVVM, Repository Pattern'],
+              ['CI/CD', 'CodeMagic, GitHub Actions, Testing, Release Pipelines'],
             ].map(([k, v]) => (
               <div key={k} className="flex gap-4 py-3 border-b border-white/5 last:border-0">
                 <span className="font-mono text-xs text-muted w-28 shrink-0 pt-0.5">{k}</span>
