@@ -12,7 +12,6 @@ import {
   ChevronDown,
   Terminal,
   Star,
-  GitFork,
 } from "lucide-react";
 
 // ── tiny primitives ──────────────────────────────────────────────────────────
@@ -89,72 +88,6 @@ const SKILLS = [
 
 const RESUME_LINK =
   "https://docs.google.com/document/d/1R2qX5sIrETN9uIfmU3-Jw3LO92TLAI3uZFhj_YJqeMo/edit?usp=sharing";
-
-const PROJECTS = [
-  {
-    title: "Flutter BLoC Clean Architecture",
-    desc: "Flutter application demonstrating BLoC state management with Clean Architecture. Structured into data, domain, and presentation layers — scalable and testable by design.",
-    tags: ["Flutter", "Dart", "BLoC", "Clean Arch"],
-    link: "https://github.com/prakashkeshari/flutter_bloc_with_clean_architecture",
-    stars: null,
-  },
-  {
-    title: "Auth System Backend",
-    desc: "Backend authentication system built with Node.js and NestJS. Implements secure user authentication, authorization, JWT tokens, and role-based access control.",
-    tags: ["Node.js", "NestJS", "Authentication", "JWT"],
-    link: "https://github.com/prakashkeshari/auth_system_backend",
-    stars: null,
-  },
-  {
-    title: "Flutter Auth System",
-    desc: "Complete Flutter authentication system with login, signup, password reset, and secure token management. Integrated with backend APIs for seamless user experience.",
-    tags: ["Flutter", "Dart", "Authentication", "API"],
-    link: "https://github.com/prakashkeshari/flutter_auth_system",
-    stars: null,
-  },
-  {
-    title: "Course Enrollment Micro Service",
-    desc: "Microservice for course enrollment system built with Node.js. Handles course registration, payment processing, and student management with RESTful APIs.",
-    tags: ["Node.js", "Microservice", "REST API", "MongoDB"],
-    link: "https://github.com/prakashkeshari/course-enrollment-micro-service",
-    stars: null,
-  },
-  {
-    title: "Android MVVM Beginner",
-    desc: "Production-ready MVVM architecture template for Android. Clean separation of concerns with LiveData, ViewModel, and Repository pattern. A reference project for building scalable Android apps.",
-    tags: ["Java", "Android", "MVVM", "LiveData"],
-    link: "https://github.com/prakashkeshari/Android-MVVM-Beginner",
-    stars: 1,
-  },
-  {
-    title: "Demo API Design",
-    desc: "Node.js REST API design reference for beginners. Covers project structure, routing, validation, error handling, and best practices for building maintainable APIs.",
-    tags: ["TypeScript", "Node.js", "REST API"],
-    link: "https://github.com/prakashkeshari/demo-api-design",
-    stars: null,
-  },
-  {
-    title: "NestJS Learning App",
-    desc: "Hands-on exploration of NestJS framework — modules, providers, dependency injection, guards, and decorators. A solid foundation for enterprise-grade backend development.",
-    tags: ["TypeScript", "NestJS", "PostgreSQL"],
-    link: "https://github.com/prakashkeshari/nest-learning-app",
-    stars: null,
-  },
-  {
-    title: "Nirog Video App",
-    desc: "Android video streaming application built in Java. Focuses on media playback, buffering strategies, and a clean video browsing UI.",
-    tags: ["Java", "Android", "Video", "Media"],
-    link: "https://github.com/prakashkeshari/NirogVideoApp",
-    stars: null,
-  },
-  {
-    title: "Next.js Learning App",
-    desc: "Exploration of Next.js with TypeScript — server-side rendering, file-based routing, API routes, and component composition patterns for modern web apps.",
-    tags: ["TypeScript", "Next.js", "React"],
-    link: "https://github.com/prakashkeshari/next-learning-app",
-    stars: null,
-  },
-];
 
 const EXPERIENCE = [
   {
@@ -289,7 +222,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-16 lg:px-24 pt-20 pb-10 overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-16 lg:px-16 pt-20 pb-10 overflow-hidden">
       {/* background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -390,7 +323,7 @@ function Hero() {
 function TechMarquee() {
   const double = [...TECH_MARQUEE, ...TECH_MARQUEE];
   return (
-    <div className="border-y border-white/5 py-4 overflow-hidden">
+    <div className="border-y border-white/5 py-8 overflow-hidden">
       <div className="flex marquee-track whitespace-nowrap">
         {double.map((t, i) => (
           <span key={i} className="inline-flex items-center gap-6 px-6">
@@ -408,7 +341,7 @@ function TechMarquee() {
 function Skills() {
   const [ref, visible] = useVisible();
   return (
-    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
+    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-16 py-24">
       <div
         className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
@@ -453,7 +386,7 @@ function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="px-6 md:px-16 lg:px-24 py-28 bg-ink/5"
+      className="px-6 md:px-16 lg:px-16 py-24 bg-ink/5"
     >
       <div
         className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -514,94 +447,10 @@ function Experience() {
   );
 }
 
-function Projects() {
-  const [ref, visible] = useVisible(0.05);
-  return (
-    <section
-      id="projects"
-      ref={ref}
-      className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30"
-    >
-      <div
-        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <SectionLabel>Selected work</SectionLabel>
-        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Projects &<br />
-          <span className="text-accent">Experiments</span>
-        </h2>
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-sm overflow-hidden">
-        {PROJECTS.map(({ title, desc, tags, link, stars }, i) => (
-          <a
-            key={title}
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group relative bg-ink p-8 flex flex-col hover:bg-surface transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{
-              transitionDelay: `${i * 60}ms`,
-              transitionDuration: "500ms",
-            }}
-          >
-            <div className="flex items-start justify-between mb-4">
-              <Terminal
-                size={18}
-                className="text-accent/60 group-hover:text-accent transition-colors"
-              />
-              <div className="flex items-center gap-3">
-                {stars && (
-                  <span className="flex items-center gap-1 font-mono text-xs text-muted">
-                    <Star size={11} /> {stars}
-                  </span>
-                )}
-                <ExternalLink
-                  size={14}
-                  className="text-muted opacity-0 group-hover:opacity-100 transition-opacity group-hover:text-accent"
-                />
-              </div>
-            </div>
-
-            <h3 className="font-display font-semibold text-lg text-paper mb-3 group-hover:text-accent transition-colors">
-              {title}
-            </h3>
-            <p className="text-muted text-sm leading-relaxed flex-1 mb-5">
-              {desc}
-            </p>
-
-            <div className="flex flex-wrap gap-1.5">
-              {tags.map((t) => (
-                <Badge key={t}>{t}</Badge>
-              ))}
-            </div>
-
-            {/* hover line */}
-            <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent group-hover:w-full transition-all duration-400" />
-          </a>
-        ))}
-      </div>
-
-      <div className="mt-8 text-center">
-        <a
-          href="https://github.com/prakashkeshari?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 font-mono text-sm text-muted hover:text-accent transition-colors"
-        >
-          <GitFork size={14} />
-          View all repositories on GitHub
-          <ArrowUpRight size={12} />
-        </a>
-      </div>
-    </section>
-  );
-}
-
 function About() {
   const [ref, visible] = useVisible();
   return (
-    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
+    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-16 py-24">
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-16 items-center">
         <div
           className={`transition-all duration-600 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"} md:col-span-1`}
@@ -682,7 +531,7 @@ function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30"
+      className="px-6 md:px-16 lg:px-16 py-24 bg-surface/30"
     >
       <div
         className={`max-w-2xl mx-auto text-center transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -791,25 +640,16 @@ function Nav() {
         PK<span className="text-accent">.</span>
       </a>
       <nav className="hidden md:flex items-center gap-8">
-        {["Skills", "Experience", "Projects", "About", "Contact"].map(
-          (item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
-            >
-              {item}
-            </a>
-          ),
-        )}
+        {["Skills", "Experience", "About", "Contact"].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase()}`}
+            className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
+          >
+            {item}
+          </a>
+        ))}
       </nav>
-      <a
-        href="#projects"
-        className="inline-flex items-center gap-1.5 font-mono text-xs text-muted border border-white/10 px-3 py-1.5 rounded-sm hover:border-accent hover:text-accent transition-colors"
-      >
-        <GitFork size={12} />
-        Projects
-      </a>
     </header>
   );
 }
@@ -824,7 +664,6 @@ export default function App() {
       <TechMarquee />
       <Skills />
       <Experience />
-      <Projects />
       <About />
       <Contact />
       <Footer />
