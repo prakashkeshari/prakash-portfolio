@@ -109,7 +109,8 @@ const EXPERIENCE = [
     ],
     tech: "Flutter, Dart, BLoC, Dio, GraphQL",
     tools: "Android Studio, Xcode, VS Code",
-    footer: "SLB Delivery Mgr App - App Store",
+    footerLink: "https://apps.apple.com/us/app/slb-customer/id1645115498",
+    footer: "SLB Customer ® App - App Store",
   },
   {
     company: "Wiom",
@@ -124,6 +125,8 @@ const EXPERIENCE = [
     ],
     tech: "Flutter, Dart, BLoC, Dio",
     tools: "Android Studio, Xcode",
+    footerLink:
+      "https://play.google.com/store/apps/details?id=com.i2e1.wiom.sales",
     footer: "Wiom Partner - Apps on Google Play",
   },
   {
@@ -139,6 +142,7 @@ const EXPERIENCE = [
     ],
     tech: "Flutter, Riverpod, Clean Architecture",
     tools: "Android Studio, VS Code",
+    footerLink: "https://apps.apple.com/us/app/krispy-kreme/id482752836",
     footer: "Krispy Kreme ® App - App Store",
   },
   {
@@ -155,6 +159,8 @@ const EXPERIENCE = [
     ],
     tech: "Flutter, Dart, Java, Kotlin, Firebase, Realm",
     tools: "Android Studio, VS Code",
+    footerLink:
+      "https://play.google.com/store/apps/details?id=com.app.nirogstreet",
     footer: "NirogStreet - Apps on Google Play",
   },
   {
@@ -168,8 +174,8 @@ const EXPERIENCE = [
     ],
     tech: "Android, Firebase",
     tools: "Android Studio, VS Code",
-    footer:
-      "Club Apparel · IRCTC eCatering Food on Track - Apps on Google Play",
+    footerLink: "https://play.google.com/store/apps/details?id=com.irctc.fot",
+    footer: "IRCTC eCatering Food on Track - Apps on Google Play",
   },
 ];
 
@@ -224,7 +230,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-16 lg:px-16 pt-20 pb-10 overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-16 lg:px-16 pt-12 pb-10 overflow-hidden">
       {/* background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -242,7 +248,7 @@ function Hero() {
         <div
           className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse-dot" />
             <span className="font-mono text-xs text-muted tracking-widest">
               AVAILABLE FOR WORK
@@ -444,7 +450,20 @@ function Experience() {
                 </div>
               </div>
 
-              <p className="mt-6 text-sm text-accent">{item.footer}</p>
+              <p className="mt-6 text-sm text-accent">
+                {item.footerLink ? (
+                  <a
+                    href={item.footerLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {item.footer}
+                  </a>
+                ) : (
+                  item.footer
+                )}
+              </p>
             </div>
           ))}
         </div>
