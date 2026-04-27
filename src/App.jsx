@@ -38,10 +38,10 @@ const SectionLabel = ({ children }) => (
 // ── data ─────────────────────────────────────────────────────────────────────
 
 const SKILLS = [
-  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'Java', 'Kotlin', 'BLoC', 'GetX'] },
-  { icon: Server,     label: 'Backend', items: ['Node.js', 'NestJS', 'REST API', 'GraphQL', 'Python'] },
-  { icon: Database,   label: 'Data',    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Prisma', 'Redis'] },
-  { icon: Code2,      label: 'Tools',   items: ['Git', 'Docker', 'Firebase', 'AWS', 'CI/CD'] },
+  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod'] },
+  { icon: Server,     label: 'Backend', items: ['GraphQL', 'REST API', 'WebSockets', 'Node.js', 'NestJS', 'Firebase'] },
+  { icon: Database,   label: 'Data',    items: ['Realm', 'Hive', 'SQLite', 'Room', 'PostgreSQL', 'MongoDB'] },
+  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira'] },
 ]
 
 const PROJECTS = [
@@ -86,6 +86,87 @@ const PROJECTS = [
     tags: ['TypeScript', 'Next.js', 'React'],
     link: 'https://github.com/prakashkeshari/next-learning-app',
     stars: null,
+  },
+]
+
+const EXPERIENCE = [
+  {
+    company: 'EX Squared Solutions India Pvt. Ltd.',
+    role: 'Senior Flutter Developer',
+    period: 'July 2024 – Present',
+    project: 'SLB Customer Delivery System Applications',
+    details: [
+      'Designed and developed scalable Flutter applications using clean architecture with repository and data source layers.',
+      'Implemented predictable, testable UI flows using BLoC / flutter_bloc.',
+      'Consumed GraphQL APIs (queries, mutations, pagination) with proper caching, authentication headers, and error handling.',
+      'Enabled real-time updates using GraphQL subscriptions and WebSocket clients.',
+      'Wrote unit and widget tests for BLoC logic and critical UI flows using flutter_test and bloc_test.',
+      'Optimized performance by reducing unnecessary widget rebuilds, analyzing frame rendering, and monitoring memory usage.',
+      'Integrated telemetry and crash analytics using Firebase Analytics and Microsoft Application Insights.',
+      'Collaborated with product, design, and backend teams; documented architectural decisions and release notes in Jira.',
+    ],
+    tech: 'Flutter, Dart, BLoC, Dio, GraphQL',
+    tools: 'Android Studio, Xcode, VS Code',
+    footer: 'SLB Delivery Mgr App - App Store',
+  },
+  {
+    company: 'Wiom',
+    role: 'Senior Flutter Developer',
+    period: 'April 2024 – June 2024',
+    project: 'Wiom Partner App',
+    details: [
+      'Built modular Flutter features with reusable UI components and consistent theming.',
+      'Implemented state management using BLoC Cubit for predictable state transitions.',
+      'Integrated Firebase and CleverTap for analytics, user insights, and crash monitoring.',
+      'Improved app stability and release confidence through testing and telemetry analysis.',
+    ],
+    tech: 'Flutter, Dart, BLoC, Dio',
+    tools: 'Android Studio, Xcode',
+    footer: 'Wiom Partner - Apps on Google Play',
+  },
+  {
+    company: 'Purview Services',
+    role: 'Senior Flutter Developer',
+    period: 'October 2023 – March 2024',
+    project: 'KK Mobile Ordering (Order Sweet)',
+    details: [
+      'Implemented Clean Architecture (Repository & Data Source patterns) to improve scalability and maintainability.',
+      'Designed reusable widgets and modular features aligned with design system standards.',
+      'Integrated Firebase for push notifications and analytics.',
+      'Supported testing, bug fixing, and release hardening activities.',
+    ],
+    tech: 'Flutter, Riverpod, Clean Architecture',
+    tools: 'Android Studio, VS Code',
+    footer: 'Krispy Kreme ® App - App Store',
+  },
+  {
+    company: 'HiNirog HealthTech Pvt. Ltd.',
+    role: 'Senior Flutter Developer',
+    period: 'April 2018 – August 2023',
+    project: 'NirogStreet',
+    details: [
+      'Owned end-to-end Flutter development for large-scale health-tech applications.',
+      'Built offline-friendly features using Realm, Hive, and SQLite for local persistence.',
+      'Integrated Razorpay for secure payments and Firebase for analytics and crash reporting.',
+      'Implemented state management using GetX and optimized performance for low-end devices.',
+      'Collaborated with cross-functional teams to deliver stable, production-ready releases.',
+    ],
+    tech: 'Flutter, Dart, Java, Kotlin, Firebase, Realm',
+    tools: 'Android Studio, VS Code',
+    footer: 'NirogStreet - Apps on Google Play',
+  },
+  {
+    company: 'TechTree IT Systems Pvt. Ltd.',
+    role: 'Junior Android Developer',
+    period: 'February 2016 – February 2018',
+    project: 'ClubApparel & IRCTC E-Catering App',
+    details: [
+      'Developed reusable UI components and integrated third-party APIs and payment gateways.',
+      'Implemented push notifications and basic analytics.',
+    ],
+    tech: 'Android, Firebase',
+    tools: 'Android Studio, VS Code',
+    footer: 'Club Apparel · IRCTC eCatering Food on Track - Apps on Google Play',
   },
 ]
 
@@ -159,27 +240,25 @@ function Hero() {
         <p
           className={`mt-8 text-muted max-w-xl leading-relaxed text-lg transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          Mobile Application Developer crafting cross-platform experiences with Flutter & Android,
-          backed by scalable Node.js &amp; NestJS APIs. I build things that feel right and work reliably.
+          Senior Flutter Developer with 9+ years of experience building scalable mobile applications for large audiences.
+          I deliver clean architecture, BLoC-driven UI, GraphQL-backed APIs, and production-ready Flutter apps with strong quality and performance.
         </p>
 
         <div className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-400 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <a
-            href="https://github.com/prakashkeshari"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#projects"
             className="group inline-flex items-center gap-2 bg-paper text-ink px-6 py-3 font-display font-semibold text-sm rounded-sm hover:bg-accent hover:text-ink transition-colors duration-200"
           >
-            <Github size={16} />
-            GitHub
+            <GitFork size={16} />
+            Company Projects
             <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <a
-            href="mailto:prakashkeshari@example.com"
+            href="#experience"
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
-            <Mail size={16} />
-            Get in touch
+            <Terminal size={16} />
+            Company Experience
           </a>
         </div>
       </div>
@@ -235,6 +314,61 @@ function Skills() {
                 <Badge key={item}>{item}</Badge>
               ))}
             </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Experience() {
+  const [ref, visible] = useVisible(0.1)
+  return (
+    <section id="experience" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-ink/5">
+      <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <SectionLabel>Professional Experience</SectionLabel>
+        <h2 className="font-display font-bold text-4xl md:text-5xl mb-16">
+          Company Projects<br /><span className="text-accent">& Experience</span>
+        </h2>
+      </div>
+
+      <div className="space-y-8">
+        {EXPERIENCE.map((item, index) => (
+          <div
+            key={item.company}
+            className={`bg-ink border border-white/10 rounded-sm p-8 transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ transitionDelay: `${index * 80}ms` }}
+          >
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+              <div>
+                <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">{item.company}</p>
+                <h3 className="font-display font-semibold text-2xl text-paper mb-2">{item.role}</h3>
+                <p className="text-muted text-sm">{item.period}</p>
+              </div>
+              <div className="text-right md:text-left">
+                <p className="text-paper font-semibold">Project</p>
+                <p className="text-muted text-sm mt-1">{item.project}</p>
+              </div>
+            </div>
+
+            <ul className="list-disc list-inside text-muted space-y-3 mb-6">
+              {item.details.map((detail, idx) => (
+                <li key={idx}>{detail}</li>
+              ))}
+            </ul>
+
+            <div className="grid sm:grid-cols-2 gap-4 text-sm text-paper/80">
+              <div>
+                <p className="font-semibold text-paper mb-2">Tech Stack</p>
+                <p>{item.tech}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-paper mb-2">Tools</p>
+                <p>{item.tools}</p>
+              </div>
+            </div>
+
+            <p className="mt-6 text-sm text-accent">{item.footer}</p>
           </div>
         ))}
       </div>
@@ -317,39 +451,37 @@ function About() {
     <section id="about" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-          <SectionLabel>Who I am</SectionLabel>
+          <SectionLabel>About Me</SectionLabel>
           <h2 className="font-display font-bold text-4xl md:text-5xl mb-8">
-            About<br /><span className="text-accent">Me</span>
+            Senior Flutter<br /><span className="text-accent">Developer</span>
           </h2>
           <div className="space-y-4 text-muted leading-relaxed">
             <p>
-              I'm Prakash Keshari — a Mobile Application Developer based in India with a strong focus
-              on building polished, reliable products. I specialise in{' '}
-              <span className="text-paper">Flutter &amp; Android</span> for the frontend of mobile apps,
-              and <span className="text-paper">Node.js &amp; NestJS</span> for backend systems.
+              Senior Flutter Developer with 9+ years of experience building, shipping, and maintaining high-quality mobile applications used by thousands of users.
+              I deliver production-ready apps with clean architecture, BLoC state management, GraphQL integrations, and strong performance.
             </p>
             <p>
-              My data stack spans <span className="text-paper">PostgreSQL, MySQL, MongoDB</span>, and Prisma
-              for elegant schema management. I care deeply about clean architecture — whether that's MVVM on
-              Android or BLoC patterns in Flutter.
+              I own features end-to-end—from design and implementation to testing, optimization, and release—while collaborating closely with product, design, and backend teams.
+              My work emphasizes offline resilience, telemetry, crash monitoring, and maintainable delivery pipelines.
             </p>
             <p>
-              When I'm not shipping code, I'm exploring new frameworks and contributing open-source
-              starter kits to help other developers build better foundations.
+              I specialize in Flutter & Dart, clean architecture patterns, GraphQL, app quality, and CI-friendly mobile release workflows.
+              I am based in India (Gurgaon / Delhi / Noida) and available for remote opportunities.
             </p>
           </div>
         </div>
 
         <div className={`transition-all duration-600 delay-200 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
           <div className="bg-surface border border-white/5 rounded-sm p-8">
-            <p className="font-mono text-xs text-accent mb-6 tracking-widest">QUICK FACTS</p>
+            <p className="font-mono text-xs text-accent mb-6 tracking-widest">CORE STRENGTHS</p>
             {[
-              ['Role', 'Mobile & Backend Developer'],
-              ['Primary Stack', 'Flutter, Node.js, NestJS'],
-              ['Mobile', 'Flutter · Android (Java/Kotlin)'],
-              ['Backend', 'Node.js · NestJS · Python'],
-              ['Databases', 'PostgreSQL · MongoDB · MySQL'],
-              ['Open to', 'Full-time · Freelance · Remote'],
+              ['Primary Role', 'Senior Flutter Developer · Mobile App Developer'],
+              ['Location', 'India · Gurgaon / Delhi / Noida · Remote'],
+              ['Mobile Frameworks', 'Flutter, Android, iOS'],
+              ['State Management', 'BLoC, GetX, Cubit, Provider, Riverpod'],
+              ['APIs', 'GraphQL, REST, WebSockets, Node.js, NestJS'],
+              ['Persistence', 'Realm, Hive, SQLite, Room'],
+              ['CI/CD', 'CodeMagic, Testing, Release Pipelines'],
             ].map(([k, v]) => (
               <div key={k} className="flex gap-4 py-3 border-b border-white/5 last:border-0">
                 <span className="font-mono text-xs text-muted w-28 shrink-0 pt-0.5">{k}</span>
@@ -382,7 +514,7 @@ function Contact() {
 
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:prakashkeshari@example.com"
+            href="mailto:prakashkeshari764@gmail.com"
             className="group inline-flex items-center gap-2 bg-accent text-ink px-7 py-3.5 font-display font-semibold text-sm rounded-sm hover:bg-paper transition-colors duration-200"
           >
             <Mail size={16} />
@@ -399,7 +531,7 @@ function Contact() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/prakashkeshari"
+            href="https://www.linkedin.com/in/prakash-kumar-95335ab9"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-white/15 text-paper px-7 py-3.5 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
@@ -422,8 +554,8 @@ function Footer() {
       <div className="flex items-center gap-5">
         {[
           { href: 'https://github.com/prakashkeshari', icon: Github },
-          { href: 'https://www.linkedin.com/in/prakashkeshari', icon: Linkedin },
-          { href: 'mailto:prakashkeshari@example.com', icon: Mail },
+          { href: 'https://www.linkedin.com/in/prakash-kumar-95335ab9', icon: Linkedin },
+          { href: 'mailto:prakashkeshari764@gmail.com', icon: Mail },
         ].map(({ href, icon: Icon }) => (
           <a
             key={href}
@@ -458,7 +590,7 @@ function Nav() {
         PK<span className="text-accent">.</span>
       </a>
       <nav className="hidden md:flex items-center gap-8">
-        {['Skills', 'Projects', 'About', 'Contact'].map(item => (
+        {['Skills', 'Experience', 'Projects', 'About', 'Contact'].map(item => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
@@ -469,13 +601,11 @@ function Nav() {
         ))}
       </nav>
       <a
-        href="https://github.com/prakashkeshari"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#projects"
         className="inline-flex items-center gap-1.5 font-mono text-xs text-muted border border-white/10 px-3 py-1.5 rounded-sm hover:border-accent hover:text-accent transition-colors"
       >
-        <Github size={12} />
-        GitHub
+        <GitFork size={12} />
+        Projects
       </a>
     </header>
   )
@@ -490,6 +620,7 @@ export default function App() {
       <Hero />
       <TechMarquee />
       <Skills />
+      <Experience />
       <Projects />
       <About />
       <Contact />
