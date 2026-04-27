@@ -38,26 +38,47 @@ const SectionLabel = ({ children }) => (
 // ── data ─────────────────────────────────────────────────────────────────────
 
 const SKILLS = [
-  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod'] },
+  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod','Clean Architecture'] },
   { icon: Server,     label: 'Backend', items: ['GraphQL', 'REST API', 'WebSockets', 'Node.js', 'NestJS', 'Firebase'] },
   { icon: Database,   label: 'Data',    items: ['Realm', 'Hive', 'SQLite', 'Room', 'PostgreSQL', 'MongoDB'] },
-  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira'] },
+  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira', 'Firebase'] },
 ]
 
 const PROJECTS = [
-  {
-    title: 'Android MVVM Starter',
-    desc: 'Production-ready MVVM architecture template for Android. Clean separation of concerns with LiveData, ViewModel, and Repository pattern. A reference project for building scalable Android apps.',
-    tags: ['Java', 'Android', 'MVVM', 'LiveData'],
-    link: 'https://github.com/prakashkeshari/Android-MVVM-Beginner',
-    stars: 1,
-  },
   {
     title: 'Flutter BLoC Clean Architecture',
     desc: 'Flutter application demonstrating BLoC state management with Clean Architecture. Structured into data, domain, and presentation layers — scalable and testable by design.',
     tags: ['Flutter', 'Dart', 'BLoC', 'Clean Arch'],
     link: 'https://github.com/prakashkeshari/flutter_bloc_with_clean_architecture',
     stars: null,
+  },
+  {
+    title: 'Auth System Backend',
+    desc: 'Backend authentication system built with Node.js and NestJS. Implements secure user authentication, authorization, JWT tokens, and role-based access control.',
+    tags: ['Node.js', 'NestJS', 'Authentication', 'JWT'],
+    link: 'https://github.com/prakashkeshari/auth_system_backend',
+    stars: null,
+  },
+  {
+    title: 'Flutter Auth System',
+    desc: 'Complete Flutter authentication system with login, signup, password reset, and secure token management. Integrated with backend APIs for seamless user experience.',
+    tags: ['Flutter', 'Dart', 'Authentication', 'API'],
+    link: 'https://github.com/prakashkeshari/flutter_auth_system',
+    stars: null,
+  },
+  {
+    title: 'Course Enrollment Micro Service',
+    desc: 'Microservice for course enrollment system built with Node.js. Handles course registration, payment processing, and student management with RESTful APIs.',
+    tags: ['Node.js', 'Microservice', 'REST API', 'MongoDB'],
+    link: 'https://github.com/prakashkeshari/course-enrollment-micro-service',
+    stars: null,
+  },
+  {
+    title: 'Android MVVM Beginner',
+    desc: 'Production-ready MVVM architecture template for Android. Clean separation of concerns with LiveData, ViewModel, and Repository pattern. A reference project for building scalable Android apps.',
+    tags: ['Java', 'Android', 'MVVM', 'LiveData'],
+    link: 'https://github.com/prakashkeshari/Android-MVVM-Beginner',
+    stars: 1,
   },
   {
     title: 'Demo API Design',
@@ -246,19 +267,18 @@ function Hero() {
 
         <div className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-400 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 bg-paper text-ink px-6 py-3 font-display font-semibold text-sm rounded-sm hover:bg-accent hover:text-ink transition-colors duration-200"
-          >
-            <GitFork size={16} />
-            Company Projects
-            <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <a
-            href="#experience"
+            href="mailto:prakashkeshari764@gmail.com"
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
-            <Terminal size={16} />
-            Company Experience
+            <Mail size={16} />
+            prakashkeshari764@gmail.com
+          </a>
+          <a
+            href="tel:+917042750794"
+            className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
+          >
+            <Smartphone size={16} />
+            +91 7042750794
           </a>
         </div>
       </div>
