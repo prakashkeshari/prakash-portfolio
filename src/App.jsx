@@ -245,7 +245,7 @@ function Hero() {
 
         <h1
           className={`font-display font-bold leading-none tracking-tight transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          style={{ fontSize: 'clamp(3rem, 10vw, 8rem)' }}
+          style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
         >
           Prakash
           <br />
@@ -315,7 +315,7 @@ function Skills() {
     <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
       <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <SectionLabel>What I work with</SectionLabel>
-        <h2 className="font-display font-bold text-4xl md:text-5xl mb-16">
+        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
           Skills &<br /><span className="text-accent">Expertise</span>
         </h2>
       </div>
@@ -349,7 +349,7 @@ function Experience() {
     <section id="experience" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-ink/5">
       <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <SectionLabel>Professional Experience</SectionLabel>
-        <h2 className="font-display font-bold text-4xl md:text-5xl mb-16">
+        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
           Company Projects<br /><span className="text-accent">& Experience</span>
         </h2>
       </div>
@@ -404,7 +404,7 @@ function Projects() {
     <section id="projects" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30">
       <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <SectionLabel>Selected work</SectionLabel>
-        <h2 className="font-display font-bold text-4xl md:text-5xl mb-16">
+        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
           Projects &<br /><span className="text-accent">Experiments</span>
         </h2>
       </div>
@@ -474,7 +474,7 @@ function About() {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
           <SectionLabel>About Me</SectionLabel>
-          <h2 className="font-display font-bold text-4xl md:text-5xl mb-8">
+          <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
             Senior Flutter<br /><span className="text-accent">Developer</span>
           </h2>
           <div className="space-y-4 text-muted leading-relaxed">
@@ -525,7 +525,7 @@ function Contact() {
         className={`max-w-2xl mx-auto text-center transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <SectionLabel>Let's connect</SectionLabel>
-        <h2 className="font-display font-bold mb-6" style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', lineHeight: 1.05 }}>
+        <h2 className="font-display font-bold mb-6" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 2.6rem)', lineHeight: 1.05 }}>
           Got a project<br />
           in <span className="text-accent">mind?</span>
         </h2>
