@@ -38,10 +38,10 @@ const SectionLabel = ({ children }) => (
 // ── data ─────────────────────────────────────────────────────────────────────
 
 const SKILLS = [
-  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod','Clean Architecture'] },
+  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod','Clean Architecture', 'MVVM'] },
   { icon: Server,     label: 'Backend', items: ['GraphQL', 'REST API', 'WebSockets', 'Node.js', 'NestJS', 'Firebase'] },
   { icon: Database,   label: 'Data',    items: ['Realm', 'Hive', 'SQLite', 'Room', 'PostgreSQL', 'MongoDB'] },
-  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira', 'Firebase'] },
+  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira', 'Firebase', 'Copilot','Cursor'] },
 ]
 
 const PROJECTS = [
@@ -266,20 +266,22 @@ function Hero() {
         </p>
 
         <div className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-400 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          <a
-            href="mailto:prakashkeshari764@gmail.com"
+          <button
+            type="button"
+            onClick={() => navigator.clipboard.writeText('prakashkeshari764@gmail.com')}
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Mail size={16} />
-            prakashkeshari764@gmail.com
-          </a>
-          <a
-            href="tel:+917042750794"
+            Copy email
+          </button>
+          <button
+            type="button"
+            onClick={() => navigator.clipboard.writeText('+91 7042750794')}
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Smartphone size={16} />
-            +91 7042750794
-          </a>
+            Copy mobile
+          </button>
         </div>
       </div>
 
