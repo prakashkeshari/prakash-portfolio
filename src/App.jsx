@@ -343,7 +343,7 @@ function TechMarquee() {
 function Skills() {
   const [ref, visible] = useVisible();
   return (
-    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-16 py-16">
+    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-16 py-12">
       <div className="max-w-6xl mx-auto">
         <div
           className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -390,7 +390,7 @@ function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="px-6 md:px-16 lg:px-16 py-16 bg-ink/5"
+      className="px-6 md:px-16 lg:px-16 py-12 bg-ink/5"
     >
       <div className="max-w-6xl mx-auto">
         <div
@@ -456,7 +456,7 @@ function Experience() {
 function About() {
   const [ref, visible] = useVisible();
   return (
-    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-16 py-16">
+    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-16 py-12">
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-start">
         <div
           className={`transition-all duration-600 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"} md:col-span-1`}
@@ -537,7 +537,7 @@ function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="px-6 md:px-16 lg:px-16 py-16 bg-surface/30"
+      className="px-6 md:px-16 lg:px-16 py-12 bg-surface/30"
     >
       <div
         className={`max-w-3xl mx-auto text-center transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -672,7 +672,9 @@ function Nav() {
 
       <nav
         className={`md:hidden bg-ink/95 backdrop-blur-md border-b border-white/5 px-6 py-4 transition-all duration-200 ${
-          menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+          menuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
         <div className="flex flex-col gap-4">
