@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from "react";
 import {
   Github,
   Linkedin,
@@ -13,7 +13,7 @@ import {
   Terminal,
   Star,
   GitFork,
-} from 'lucide-react'
+} from "lucide-react";
 
 // ── tiny primitives ──────────────────────────────────────────────────────────
 
@@ -21,205 +21,272 @@ const Badge = ({ children, accent }) => (
   <span
     className={`inline-block px-2.5 py-0.5 text-xs font-mono rounded-sm border ${
       accent
-        ? 'border-accent text-accent bg-accent/10'
-        : 'border-white/10 text-muted bg-white/5'
+        ? "border-accent text-accent bg-accent/10"
+        : "border-white/10 text-muted bg-white/5"
     }`}
   >
     {children}
   </span>
-)
+);
 
 const SectionLabel = ({ children }) => (
   <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-4">
     {children}
   </p>
-)
+);
 
 // ── data ─────────────────────────────────────────────────────────────────────
 
 const SKILLS = [
-  { icon: Smartphone, label: 'Mobile', items: ['Flutter', 'Dart', 'Android', 'iOS', 'BLoC', 'GetX', 'Riverpod','Clean Architecture', 'MVVM'] },
-  { icon: Server,     label: 'Backend', items: ['GraphQL', 'REST API', 'WebSockets', 'Node.js', 'NestJS', 'Firebase'] },
-  { icon: Database,   label: 'Data',    items: ['Realm', 'Hive', 'SQLite', 'Room', 'PostgreSQL', 'MongoDB'] },
-  { icon: Code2,      label: 'Tools',   items: ['CI/CD', 'CodeMagic', 'Testing', 'Git', 'Figma', 'Jira', 'Firebase', 'Copilot','Cursor'] },
-]
+  {
+    icon: Smartphone,
+    label: "Mobile",
+    items: [
+      "Flutter",
+      "Dart",
+      "Android",
+      "iOS",
+      "BLoC",
+      "GetX",
+      "Riverpod",
+      "Clean Architecture",
+      "MVVM",
+    ],
+  },
+  {
+    icon: Server,
+    label: "Backend",
+    items: [
+      "GraphQL",
+      "REST API",
+      "WebSockets",
+      "Node.js",
+      "NestJS",
+      "Firebase",
+    ],
+  },
+  {
+    icon: Database,
+    label: "Data",
+    items: ["Realm", "Hive", "SQLite", "Room", "PostgreSQL", "MongoDB"],
+  },
+  {
+    icon: Code2,
+    label: "Tools",
+    items: [
+      "CI/CD",
+      "CodeMagic",
+      "Testing",
+      "Git",
+      "Figma",
+      "Jira",
+      "Firebase",
+      "Copilot",
+      "Cursor",
+    ],
+  },
+];
+
+const RESUME_LINK =
+  "https://docs.google.com/document/d/1R2qX5sIrETN9uIfmU3-Jw3LO92TLAI3uZFhj_YJqeMo/edit?usp=sharing";
 
 const PROJECTS = [
   {
-    title: 'Flutter BLoC Clean Architecture',
-    desc: 'Flutter application demonstrating BLoC state management with Clean Architecture. Structured into data, domain, and presentation layers — scalable and testable by design.',
-    tags: ['Flutter', 'Dart', 'BLoC', 'Clean Arch'],
-    link: 'https://github.com/prakashkeshari/flutter_bloc_with_clean_architecture',
+    title: "Flutter BLoC Clean Architecture",
+    desc: "Flutter application demonstrating BLoC state management with Clean Architecture. Structured into data, domain, and presentation layers — scalable and testable by design.",
+    tags: ["Flutter", "Dart", "BLoC", "Clean Arch"],
+    link: "https://github.com/prakashkeshari/flutter_bloc_with_clean_architecture",
     stars: null,
   },
   {
-    title: 'Auth System Backend',
-    desc: 'Backend authentication system built with Node.js and NestJS. Implements secure user authentication, authorization, JWT tokens, and role-based access control.',
-    tags: ['Node.js', 'NestJS', 'Authentication', 'JWT'],
-    link: 'https://github.com/prakashkeshari/auth_system_backend',
+    title: "Auth System Backend",
+    desc: "Backend authentication system built with Node.js and NestJS. Implements secure user authentication, authorization, JWT tokens, and role-based access control.",
+    tags: ["Node.js", "NestJS", "Authentication", "JWT"],
+    link: "https://github.com/prakashkeshari/auth_system_backend",
     stars: null,
   },
   {
-    title: 'Flutter Auth System',
-    desc: 'Complete Flutter authentication system with login, signup, password reset, and secure token management. Integrated with backend APIs for seamless user experience.',
-    tags: ['Flutter', 'Dart', 'Authentication', 'API'],
-    link: 'https://github.com/prakashkeshari/flutter_auth_system',
+    title: "Flutter Auth System",
+    desc: "Complete Flutter authentication system with login, signup, password reset, and secure token management. Integrated with backend APIs for seamless user experience.",
+    tags: ["Flutter", "Dart", "Authentication", "API"],
+    link: "https://github.com/prakashkeshari/flutter_auth_system",
     stars: null,
   },
   {
-    title: 'Course Enrollment Micro Service',
-    desc: 'Microservice for course enrollment system built with Node.js. Handles course registration, payment processing, and student management with RESTful APIs.',
-    tags: ['Node.js', 'Microservice', 'REST API', 'MongoDB'],
-    link: 'https://github.com/prakashkeshari/course-enrollment-micro-service',
+    title: "Course Enrollment Micro Service",
+    desc: "Microservice for course enrollment system built with Node.js. Handles course registration, payment processing, and student management with RESTful APIs.",
+    tags: ["Node.js", "Microservice", "REST API", "MongoDB"],
+    link: "https://github.com/prakashkeshari/course-enrollment-micro-service",
     stars: null,
   },
   {
-    title: 'Android MVVM Beginner',
-    desc: 'Production-ready MVVM architecture template for Android. Clean separation of concerns with LiveData, ViewModel, and Repository pattern. A reference project for building scalable Android apps.',
-    tags: ['Java', 'Android', 'MVVM', 'LiveData'],
-    link: 'https://github.com/prakashkeshari/Android-MVVM-Beginner',
+    title: "Android MVVM Beginner",
+    desc: "Production-ready MVVM architecture template for Android. Clean separation of concerns with LiveData, ViewModel, and Repository pattern. A reference project for building scalable Android apps.",
+    tags: ["Java", "Android", "MVVM", "LiveData"],
+    link: "https://github.com/prakashkeshari/Android-MVVM-Beginner",
     stars: 1,
   },
   {
-    title: 'Demo API Design',
-    desc: 'Node.js REST API design reference for beginners. Covers project structure, routing, validation, error handling, and best practices for building maintainable APIs.',
-    tags: ['TypeScript', 'Node.js', 'REST API'],
-    link: 'https://github.com/prakashkeshari/demo-api-design',
+    title: "Demo API Design",
+    desc: "Node.js REST API design reference for beginners. Covers project structure, routing, validation, error handling, and best practices for building maintainable APIs.",
+    tags: ["TypeScript", "Node.js", "REST API"],
+    link: "https://github.com/prakashkeshari/demo-api-design",
     stars: null,
   },
   {
-    title: 'NestJS Learning App',
-    desc: 'Hands-on exploration of NestJS framework — modules, providers, dependency injection, guards, and decorators. A solid foundation for enterprise-grade backend development.',
-    tags: ['TypeScript', 'NestJS', 'PostgreSQL'],
-    link: 'https://github.com/prakashkeshari/nest-learning-app',
+    title: "NestJS Learning App",
+    desc: "Hands-on exploration of NestJS framework — modules, providers, dependency injection, guards, and decorators. A solid foundation for enterprise-grade backend development.",
+    tags: ["TypeScript", "NestJS", "PostgreSQL"],
+    link: "https://github.com/prakashkeshari/nest-learning-app",
     stars: null,
   },
   {
-    title: 'Nirog Video App',
-    desc: 'Android video streaming application built in Java. Focuses on media playback, buffering strategies, and a clean video browsing UI.',
-    tags: ['Java', 'Android', 'Video', 'Media'],
-    link: 'https://github.com/prakashkeshari/NirogVideoApp',
+    title: "Nirog Video App",
+    desc: "Android video streaming application built in Java. Focuses on media playback, buffering strategies, and a clean video browsing UI.",
+    tags: ["Java", "Android", "Video", "Media"],
+    link: "https://github.com/prakashkeshari/NirogVideoApp",
     stars: null,
   },
   {
-    title: 'Next.js Learning App',
-    desc: 'Exploration of Next.js with TypeScript — server-side rendering, file-based routing, API routes, and component composition patterns for modern web apps.',
-    tags: ['TypeScript', 'Next.js', 'React'],
-    link: 'https://github.com/prakashkeshari/next-learning-app',
+    title: "Next.js Learning App",
+    desc: "Exploration of Next.js with TypeScript — server-side rendering, file-based routing, API routes, and component composition patterns for modern web apps.",
+    tags: ["TypeScript", "Next.js", "React"],
+    link: "https://github.com/prakashkeshari/next-learning-app",
     stars: null,
   },
-]
+];
 
 const EXPERIENCE = [
   {
-    company: 'EX Squared Solutions India Pvt. Ltd.',
-    role: 'Senior Flutter Developer',
-    period: 'July 2024 – Present',
-    project: 'SLB Customer Delivery System Applications',
+    company: "EX Squared Solutions India Pvt. Ltd.",
+    role: "Senior Flutter Developer",
+    period: "July 2024 – Present",
+    project: "SLB Customer Delivery System Applications",
     details: [
-      'Designed and developed scalable Flutter applications using clean architecture with repository and data source layers.',
-      'Implemented predictable, testable UI flows using BLoC / flutter_bloc.',
-      'Consumed GraphQL APIs (queries, mutations, pagination) with proper caching, authentication headers, and error handling.',
-      'Enabled real-time updates using GraphQL subscriptions and WebSocket clients.',
-      'Wrote unit and widget tests for BLoC logic and critical UI flows using flutter_test and bloc_test.',
-      'Optimized performance by reducing unnecessary widget rebuilds, analyzing frame rendering, and monitoring memory usage.',
-      'Integrated telemetry and crash analytics using Firebase Analytics and Microsoft Application Insights.',
-      'Collaborated with product, design, and backend teams; documented architectural decisions and release notes in Jira.',
+      "Designed and developed scalable Flutter applications using clean architecture with repository and data source layers.",
+      "Implemented predictable, testable UI flows using BLoC / flutter_bloc.",
+      "Consumed GraphQL APIs (queries, mutations, pagination) with proper caching, authentication headers, and error handling.",
+      "Enabled real-time updates using GraphQL subscriptions and WebSocket clients.",
+      "Wrote unit and widget tests for BLoC logic and critical UI flows using flutter_test and bloc_test.",
+      "Optimized performance by reducing unnecessary widget rebuilds, analyzing frame rendering, and monitoring memory usage.",
+      "Integrated telemetry and crash analytics using Firebase Analytics and Microsoft Application Insights.",
+      "Collaborated with product, design, and backend teams; documented architectural decisions and release notes in Jira.",
     ],
-    tech: 'Flutter, Dart, BLoC, Dio, GraphQL',
-    tools: 'Android Studio, Xcode, VS Code',
-    footer: 'SLB Delivery Mgr App - App Store',
+    tech: "Flutter, Dart, BLoC, Dio, GraphQL",
+    tools: "Android Studio, Xcode, VS Code",
+    footer: "SLB Delivery Mgr App - App Store",
   },
   {
-    company: 'Wiom',
-    role: 'Senior Flutter Developer',
-    period: 'April 2024 – June 2024',
-    project: 'Wiom Partner App',
+    company: "Wiom",
+    role: "Senior Flutter Developer",
+    period: "April 2024 – June 2024",
+    project: "Wiom Partner App",
     details: [
-      'Built modular Flutter features with reusable UI components and consistent theming.',
-      'Implemented state management using BLoC Cubit for predictable state transitions.',
-      'Integrated Firebase and CleverTap for analytics, user insights, and crash monitoring.',
-      'Improved app stability and release confidence through testing and telemetry analysis.',
+      "Built modular Flutter features with reusable UI components and consistent theming.",
+      "Implemented state management using BLoC Cubit for predictable state transitions.",
+      "Integrated Firebase and CleverTap for analytics, user insights, and crash monitoring.",
+      "Improved app stability and release confidence through testing and telemetry analysis.",
     ],
-    tech: 'Flutter, Dart, BLoC, Dio',
-    tools: 'Android Studio, Xcode',
-    footer: 'Wiom Partner - Apps on Google Play',
+    tech: "Flutter, Dart, BLoC, Dio",
+    tools: "Android Studio, Xcode",
+    footer: "Wiom Partner - Apps on Google Play",
   },
   {
-    company: 'Purview Services',
-    role: 'Senior Flutter Developer',
-    period: 'October 2023 – March 2024',
-    project: 'KK Mobile Ordering (Order Sweet)',
+    company: "Purview Services",
+    role: "Senior Flutter Developer",
+    period: "October 2023 – March 2024",
+    project: "KK Mobile Ordering (Order Sweet)",
     details: [
-      'Implemented Clean Architecture (Repository & Data Source patterns) to improve scalability and maintainability.',
-      'Designed reusable widgets and modular features aligned with design system standards.',
-      'Integrated Firebase for push notifications and analytics.',
-      'Supported testing, bug fixing, and release hardening activities.',
+      "Implemented Clean Architecture (Repository & Data Source patterns) to improve scalability and maintainability.",
+      "Designed reusable widgets and modular features aligned with design system standards.",
+      "Integrated Firebase for push notifications and analytics.",
+      "Supported testing, bug fixing, and release hardening activities.",
     ],
-    tech: 'Flutter, Riverpod, Clean Architecture',
-    tools: 'Android Studio, VS Code',
-    footer: 'Krispy Kreme ® App - App Store',
+    tech: "Flutter, Riverpod, Clean Architecture",
+    tools: "Android Studio, VS Code",
+    footer: "Krispy Kreme ® App - App Store",
   },
   {
-    company: 'HiNirog HealthTech Pvt. Ltd.',
-    role: 'Senior Flutter Developer',
-    period: 'April 2018 – August 2023',
-    project: 'NirogStreet',
+    company: "HiNirog HealthTech Pvt. Ltd.",
+    role: "Senior Flutter Developer",
+    period: "April 2018 – August 2023",
+    project: "NirogStreet",
     details: [
-      'Owned end-to-end Flutter development for large-scale health-tech applications.',
-      'Built offline-friendly features using Realm, Hive, and SQLite for local persistence.',
-      'Integrated Razorpay for secure payments and Firebase for analytics and crash reporting.',
-      'Implemented state management using GetX and optimized performance for low-end devices.',
-      'Collaborated with cross-functional teams to deliver stable, production-ready releases.',
+      "Owned end-to-end Flutter development for large-scale health-tech applications.",
+      "Built offline-friendly features using Realm, Hive, and SQLite for local persistence.",
+      "Integrated Razorpay for secure payments and Firebase for analytics and crash reporting.",
+      "Implemented state management using GetX and optimized performance for low-end devices.",
+      "Collaborated with cross-functional teams to deliver stable, production-ready releases.",
     ],
-    tech: 'Flutter, Dart, Java, Kotlin, Firebase, Realm',
-    tools: 'Android Studio, VS Code',
-    footer: 'NirogStreet - Apps on Google Play',
+    tech: "Flutter, Dart, Java, Kotlin, Firebase, Realm",
+    tools: "Android Studio, VS Code",
+    footer: "NirogStreet - Apps on Google Play",
   },
   {
-    company: 'TechTree IT Systems Pvt. Ltd.',
-    role: 'Junior Android Developer',
-    period: 'February 2016 – February 2018',
-    project: 'ClubApparel & IRCTC E-Catering App',
+    company: "TechTree IT Systems Pvt. Ltd.",
+    role: "Junior Android Developer",
+    period: "February 2016 – February 2018",
+    project: "ClubApparel & IRCTC E-Catering App",
     details: [
-      'Developed reusable UI components and integrated third-party APIs and payment gateways.',
-      'Implemented push notifications and basic analytics.',
+      "Developed reusable UI components and integrated third-party APIs and payment gateways.",
+      "Implemented push notifications and basic analytics.",
     ],
-    tech: 'Android, Firebase',
-    tools: 'Android Studio, VS Code',
-    footer: 'Club Apparel · IRCTC eCatering Food on Track - Apps on Google Play',
+    tech: "Android, Firebase",
+    tools: "Android Studio, VS Code",
+    footer:
+      "Club Apparel · IRCTC eCatering Food on Track - Apps on Google Play",
   },
-]
+];
 
 const TECH_MARQUEE = [
-  'Flutter', 'Dart', 'Android', 'Node.js', 'NestJS', 'Python',
-  'PostgreSQL', 'MongoDB', 'Prisma', 'TypeScript', 'REST API',
-  'GraphQL', 'Docker', 'Firebase', 'BLoC', 'Clean Architecture',
-]
+  "Flutter",
+  "Dart",
+  "Android",
+  "Node.js",
+  "NestJS",
+  "Python",
+  "PostgreSQL",
+  "MongoDB",
+  "Prisma",
+  "TypeScript",
+  "REST API",
+  "GraphQL",
+  "Docker",
+  "Firebase",
+  "BLoC",
+  "Clean Architecture",
+];
 
 // ── hook: intersection observer ───────────────────────────────────────────────
 
 function useVisible(threshold = 0.15) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const el = ref.current;
+    if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return [ref, visible]
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
 }
 
 // ── sections ──────────────────────────────────────────────────────────────────
 
 function Hero() {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setTimeout(() => setMounted(true), 50) }, [])
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setMounted(true), 50);
+  }, []);
 
   return (
     <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-16 lg:px-24 pt-20 pb-10 overflow-hidden">
@@ -227,8 +294,9 @@ function Hero() {
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: 'linear-gradient(#F5F2EC 1px, transparent 1px), linear-gradient(90deg, #F5F2EC 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundImage:
+            "linear-gradient(#F5F2EC 1px, transparent 1px), linear-gradient(90deg, #F5F2EC 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
         }}
       />
       {/* orange glow */}
@@ -236,39 +304,56 @@ function Hero() {
       <div className="absolute bottom-10 right-0 w-72 h-72 rounded-full bg-accent/5 blur-[80px] pointer-events-none" />
 
       <div className="relative max-w-5xl">
-        <div className={`transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div
+          className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse-dot" />
-            <span className="font-mono text-xs text-muted tracking-widest">AVAILABLE FOR WORK</span>
+            <span className="font-mono text-xs text-muted tracking-widest">
+              AVAILABLE FOR WORK
+            </span>
           </div>
         </div>
 
         <h1
-          className={`font-display font-bold leading-none tracking-tight transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
+          className={`font-display font-bold leading-none tracking-tight transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
         >
           Prakash
           <br />
           <span className="text-accent">Kumar</span>
         </h1>
 
-        <div className={`mt-6 flex flex-wrap gap-2 transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          {['Flutter & Android', 'Node.js & NestJS', 'PostgreSQL & MongoDB', 'Clean Architecture & MVVM'].map(t => (
+        <div
+          className={`mt-6 flex flex-wrap gap-2 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
+          {[
+            "Flutter & Android",
+            "Node.js & NestJS",
+            "PostgreSQL & MongoDB",
+            "Clean Architecture & MVVM",
+          ].map((t) => (
             <Badge key={t}>{t}</Badge>
           ))}
         </div>
 
         <p
-          className={`mt-8 text-muted max-w-xl leading-relaxed text-lg transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          className={`mt-8 text-muted max-w-xl leading-relaxed text-lg transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
-          Senior Flutter Developer with 9+ years of experience building scalable mobile applications for large audiences.
-          I deliver clean architecture, BLoC-driven UI, GraphQL-backed APIs, and production-ready Flutter apps with strong quality and performance.
+          Senior Flutter Developer with 9+ years of experience building scalable
+          mobile applications for large audiences. I deliver clean architecture,
+          BLoC-driven UI, GraphQL-backed APIs, and production-ready Flutter apps
+          with strong quality and performance.
         </p>
 
-        <div className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-400 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div
+          className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        >
           <button
             type="button"
-            onClick={() => navigator.clipboard.writeText('prakashkeshari764@gmail.com')}
+            onClick={() =>
+              navigator.clipboard.writeText("prakashkeshari764@gmail.com")
+            }
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Mail size={16} />
@@ -276,12 +361,21 @@ function Hero() {
           </button>
           <button
             type="button"
-            onClick={() => navigator.clipboard.writeText('+91 7042750794')}
+            onClick={() => navigator.clipboard.writeText("+91 7042750794")}
             className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
           >
             <Smartphone size={16} />
             +91 7042750794
           </button>
+          <a
+            href={RESUME_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 border border-white/15 text-paper px-6 py-3 font-display font-semibold text-sm rounded-sm hover:border-accent hover:text-accent transition-colors duration-200"
+          >
+            <ExternalLink size={16} />
+            Download Resume
+          </a>
         </div>
       </div>
 
@@ -290,33 +384,38 @@ function Hero() {
         <ChevronDown size={14} className="animate-bounce" />
       </div>
     </section>
-  )
+  );
 }
 
 function TechMarquee() {
-  const double = [...TECH_MARQUEE, ...TECH_MARQUEE]
+  const double = [...TECH_MARQUEE, ...TECH_MARQUEE];
   return (
     <div className="border-y border-white/5 py-4 overflow-hidden">
       <div className="flex marquee-track whitespace-nowrap">
         {double.map((t, i) => (
           <span key={i} className="inline-flex items-center gap-6 px-6">
-            <span className="font-display text-sm font-semibold text-paper/50 hover:text-accent transition-colors cursor-default">{t}</span>
+            <span className="font-display text-sm font-semibold text-paper/50 hover:text-accent transition-colors cursor-default">
+              {t}
+            </span>
             <span className="text-accent/30">◆</span>
           </span>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function Skills() {
-  const [ref, visible] = useVisible()
+  const [ref, visible] = useVisible();
   return (
     <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
-      <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div
+        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <SectionLabel>What I work with</SectionLabel>
         <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Skills &<br /><span className="text-accent">Expertise</span>
+          Skills &<br />
+          <span className="text-accent">Expertise</span>
         </h2>
       </div>
 
@@ -324,15 +423,20 @@ function Skills() {
         {SKILLS.map(({ icon: Icon, label, items }, i) => (
           <div
             key={label}
-            className={`bg-ink p-8 group hover:bg-surface transition-colors duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            style={{ transitionDelay: `${i * 80}ms`, transitionDuration: '500ms' }}
+            className={`bg-ink p-8 group hover:bg-surface transition-colors duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            style={{
+              transitionDelay: `${i * 80}ms`,
+              transitionDuration: "500ms",
+            }}
           >
             <div className="w-10 h-10 rounded-sm bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
               <Icon size={18} className="text-accent" />
             </div>
-            <p className="font-display font-semibold text-paper mb-4 text-lg">{label}</p>
+            <p className="font-display font-semibold text-paper mb-4 text-lg">
+              {label}
+            </p>
             <div className="flex flex-wrap gap-1.5">
-              {items.map(item => (
+              {items.map((item) => (
                 <Badge key={item}>{item}</Badge>
               ))}
             </div>
@@ -340,17 +444,25 @@ function Skills() {
         ))}
       </div>
     </section>
-  )
+  );
 }
 
 function Experience() {
-  const [ref, visible] = useVisible(0.1)
+  const [ref, visible] = useVisible(0.1);
   return (
-    <section id="experience" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-ink/5">
-      <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <section
+      id="experience"
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-28 bg-ink/5"
+    >
+      <div
+        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <SectionLabel>Professional Experience</SectionLabel>
         <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Company Projects<br /><span className="text-accent">& Experience</span>
+          Company Projects
+          <br />
+          <span className="text-accent">& Experience</span>
         </h2>
       </div>
 
@@ -358,13 +470,17 @@ function Experience() {
         {EXPERIENCE.map((item, index) => (
           <div
             key={item.company}
-            className={`bg-ink border border-white/10 rounded-sm p-8 transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`bg-ink border border-white/10 rounded-sm p-8 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             style={{ transitionDelay: `${index * 80}ms` }}
           >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
               <div>
-                <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">{item.company}</p>
-                <h3 className="font-display font-semibold text-2xl text-paper mb-2">{item.role}</h3>
+                <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+                  {item.company}
+                </p>
+                <h3 className="font-display font-semibold text-2xl text-paper mb-2">
+                  {item.role}
+                </h3>
                 <p className="text-muted text-sm">{item.period}</p>
               </div>
               <div className="text-right md:text-left">
@@ -395,17 +511,24 @@ function Experience() {
         ))}
       </div>
     </section>
-  )
+  );
 }
 
 function Projects() {
-  const [ref, visible] = useVisible(0.05)
+  const [ref, visible] = useVisible(0.05);
   return (
-    <section id="projects" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30">
-      <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <section
+      id="projects"
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30"
+    >
+      <div
+        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <SectionLabel>Selected work</SectionLabel>
         <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Projects &<br /><span className="text-accent">Experiments</span>
+          Projects &<br />
+          <span className="text-accent">Experiments</span>
         </h2>
       </div>
 
@@ -416,11 +539,17 @@ function Projects() {
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group relative bg-ink p-8 flex flex-col hover:bg-surface transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            style={{ transitionDelay: `${i * 60}ms`, transitionDuration: '500ms' }}
+            className={`group relative bg-ink p-8 flex flex-col hover:bg-surface transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            style={{
+              transitionDelay: `${i * 60}ms`,
+              transitionDuration: "500ms",
+            }}
           >
             <div className="flex items-start justify-between mb-4">
-              <Terminal size={18} className="text-accent/60 group-hover:text-accent transition-colors" />
+              <Terminal
+                size={18}
+                className="text-accent/60 group-hover:text-accent transition-colors"
+              />
               <div className="flex items-center gap-3">
                 {stars && (
                   <span className="flex items-center gap-1 font-mono text-xs text-muted">
@@ -437,10 +566,12 @@ function Projects() {
             <h3 className="font-display font-semibold text-lg text-paper mb-3 group-hover:text-accent transition-colors">
               {title}
             </h3>
-            <p className="text-muted text-sm leading-relaxed flex-1 mb-5">{desc}</p>
+            <p className="text-muted text-sm leading-relaxed flex-1 mb-5">
+              {desc}
+            </p>
 
             <div className="flex flex-wrap gap-1.5">
-              {tags.map(t => (
+              {tags.map((t) => (
                 <Badge key={t}>{t}</Badge>
               ))}
             </div>
@@ -464,50 +595,77 @@ function Projects() {
         </a>
       </div>
     </section>
-  )
+  );
 }
 
 function About() {
-  const [ref, visible] = useVisible()
+  const [ref, visible] = useVisible();
   return (
     <section id="about" ref={ref} className="px-6 md:px-16 lg:px-24 py-28">
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-16 items-center">
-        <div className={`transition-all duration-600 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'} md:col-span-1`}>
+        <div
+          className={`transition-all duration-600 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"} md:col-span-1`}
+        >
           <SectionLabel>About Me</SectionLabel>
           <h2 className="font-display font-bold text-3xl md:text-4xl mb-8">
-            Senior Flutter<br /><span className="text-accent">Developer</span>
+            Senior Flutter
+            <br />
+            <span className="text-accent">Developer</span>
           </h2>
           <div className="space-y-4 text-muted leading-relaxed">
             <p>
-              Senior Flutter Developer with 9+ years of experience building, shipping, and maintaining high-quality mobile applications used by thousands of users.
-              I deliver production-ready apps with clean architecture, BLoC state management, GraphQL integrations, and strong performance.
+              Senior Flutter Developer with 9+ years of experience building,
+              shipping, and maintaining high-quality mobile applications used by
+              thousands of users. I deliver production-ready apps with clean
+              architecture, BLoC state management, GraphQL integrations, and
+              strong performance.
             </p>
             <p>
-              I own features end-to-end—from design and implementation to testing, optimization, and release—while collaborating closely with product, design, and backend teams.
-              My work emphasizes offline resilience, telemetry, crash monitoring, and maintainable delivery pipelines.
+              I own features end-to-end—from design and implementation to
+              testing, optimization, and release—while collaborating closely
+              with product, design, and backend teams. My work emphasizes
+              offline resilience, telemetry, crash monitoring, and maintainable
+              delivery pipelines.
             </p>
             <p>
-              I specialize in Flutter & Dart, clean architecture patterns, GraphQL, app quality, and CI-friendly mobile release workflows.
-              I am based in India (Gurgaon / Delhi / Noida) and available for remote opportunities.
+              I specialize in Flutter & Dart, clean architecture patterns,
+              GraphQL, app quality, and CI-friendly mobile release workflows. I
+              am based in India (Gurgaon / Delhi / Noida) and available for
+              remote opportunities.
             </p>
           </div>
         </div>
 
-        <div className={`transition-all duration-600 delay-200 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} md:col-span-2`}>
+        <div
+          className={`transition-all duration-600 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"} md:col-span-2`}
+        >
           <div className="bg-surface border border-white/5 rounded-sm p-8">
-            <p className="font-mono text-xs text-accent mb-6 tracking-widest">CORE STRENGTHS</p>
+            <p className="font-mono text-xs text-accent mb-6 tracking-widest">
+              CORE STRENGTHS
+            </p>
             {[
-              ['Primary Role', 'Senior Flutter Developer · Mobile App Developer'],
-              ['Location', 'India · Gurgaon / Delhi / Noida · Remote'],
-              ['Mobile Frameworks', 'Flutter, Android, iOS'],
-              ['State Management', 'BLoC, GetX, Cubit, Provider, Riverpod'],
-              ['APIs', 'GraphQL, REST, WebSockets, Node.js, NestJS'],
-              ['Persistence', 'Realm, Hive, SQLite, Room'],
-              ['Architecture', 'Clean Architecture, MVVM, Repository Pattern'],
-              ['CI/CD', 'CodeMagic, GitHub Actions, Testing, Release Pipelines'],
+              [
+                "Primary Role",
+                "Senior Flutter Developer · Mobile App Developer",
+              ],
+              ["Location", "India · Gurgaon / Delhi / Noida · Remote"],
+              ["Mobile Frameworks", "Flutter, Android, iOS"],
+              ["State Management", "BLoC, GetX, Cubit, Provider, Riverpod"],
+              ["APIs", "GraphQL, REST, WebSockets, Node.js, NestJS"],
+              ["Persistence", "Realm, Hive, SQLite, Room"],
+              ["Architecture", "Clean Architecture, MVVM, Repository Pattern"],
+              [
+                "CI/CD",
+                "CodeMagic, GitHub Actions, Testing, Release Pipelines",
+              ],
             ].map(([k, v]) => (
-              <div key={k} className="flex gap-4 py-3 border-b border-white/5 last:border-0">
-                <span className="font-mono text-xs text-muted w-28 shrink-0 pt-0.5">{k}</span>
+              <div
+                key={k}
+                className="flex gap-4 py-3 border-b border-white/5 last:border-0"
+              >
+                <span className="font-mono text-xs text-muted w-28 shrink-0 pt-0.5">
+                  {k}
+                </span>
                 <span className="text-sm text-paper">{v}</span>
               </div>
             ))}
@@ -515,24 +673,33 @@ function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Contact() {
-  const [ref, visible] = useVisible()
+  const [ref, visible] = useVisible();
   return (
-    <section id="contact" ref={ref} className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30">
+    <section
+      id="contact"
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-28 bg-surface/30"
+    >
       <div
-        className={`max-w-2xl mx-auto text-center transition-all duration-600 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`max-w-2xl mx-auto text-center transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <SectionLabel>Let's connect</SectionLabel>
-        <h2 className="font-display font-bold mb-6" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 2.6rem)', lineHeight: 1.05 }}>
-          Got a project<br />
+        <h2
+          className="font-display font-bold mb-6"
+          style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.6rem)", lineHeight: 1.05 }}
+        >
+          Got a project
+          <br />
           in <span className="text-accent">mind?</span>
         </h2>
         <p className="text-muted text-lg mb-10 leading-relaxed">
-          Whether it's a Flutter app, a Node.js API, or an Android project — I'd love to hear about it.
-          Drop me a line and let's build something great together.
+          Whether it's a Flutter app, a Node.js API, or an Android project — I'd
+          love to hear about it. Drop me a line and let's build something great
+          together.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
@@ -544,7 +711,10 @@ function Contact() {
           >
             <Mail size={16} />
             Send me an email
-            <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight
+              size={14}
+              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </a>
           <a
             href="https://github.com/prakashkeshari"
@@ -567,7 +737,7 @@ function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Footer() {
@@ -578,14 +748,17 @@ function Footer() {
       </p>
       <div className="flex items-center gap-5">
         {[
-          { href: 'https://github.com/prakashkeshari', icon: Github },
-          { href: 'https://www.linkedin.com/in/prakash-kumar-95335ab9', icon: Linkedin },
-          { href: 'mailto:prakashkeshari764@gmail.com', icon: Mail },
+          { href: "https://github.com/prakashkeshari", icon: Github },
+          {
+            href: "https://www.linkedin.com/in/prakash-kumar-95335ab9",
+            icon: Linkedin,
+          },
+          { href: "mailto:prakashkeshari764@gmail.com", icon: Mail },
         ].map(({ href, icon: Icon }) => (
           <a
             key={href}
             href={href}
-            target={href.startsWith('mailto') ? undefined : '_blank'}
+            target={href.startsWith("mailto") ? undefined : "_blank"}
             rel="noopener noreferrer"
             className="text-muted hover:text-accent transition-colors"
           >
@@ -594,36 +767,41 @@ function Footer() {
         ))}
       </div>
     </footer>
-  )
+  );
 }
 
 function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
-  }, [])
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-5 flex items-center justify-between transition-all duration-300 ${
-        scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-white/5' : ''
+        scrolled ? "bg-ink/90 backdrop-blur-md border-b border-white/5" : ""
       }`}
     >
-      <a href="#" className="font-display font-bold text-paper hover:text-accent transition-colors">
+      <a
+        href="#"
+        className="font-display font-bold text-paper hover:text-accent transition-colors"
+      >
         PK<span className="text-accent">.</span>
       </a>
       <nav className="hidden md:flex items-center gap-8">
-        {['Skills', 'Experience', 'Projects', 'About', 'Contact'].map(item => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
-          >
-            {item}
-          </a>
-        ))}
+        {["Skills", "Experience", "Projects", "About", "Contact"].map(
+          (item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
+            >
+              {item}
+            </a>
+          ),
+        )}
       </nav>
       <a
         href="#projects"
@@ -633,7 +811,7 @@ function Nav() {
         Projects
       </a>
     </header>
-  )
+  );
 }
 
 // ── app ───────────────────────────────────────────────────────────────────────
@@ -651,5 +829,5 @@ export default function App() {
       <Contact />
       <Footer />
     </div>
-  )
+  );
 }
