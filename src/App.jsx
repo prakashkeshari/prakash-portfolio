@@ -12,6 +12,8 @@ import {
   ChevronDown,
   Terminal,
   Star,
+  Menu,
+  X,
 } from "lucide-react";
 
 // ── tiny primitives ──────────────────────────────────────────────────────────
@@ -341,40 +343,42 @@ function TechMarquee() {
 function Skills() {
   const [ref, visible] = useVisible();
   return (
-    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-16 py-24">
-      <div
-        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <SectionLabel>What I work with</SectionLabel>
-        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Skills &<br />
-          <span className="text-accent">Expertise</span>
-        </h2>
-      </div>
+    <section id="skills" ref={ref} className="px-6 md:px-16 lg:px-16 py-16">
+      <div className="max-w-6xl mx-auto">
+        <div
+          className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <SectionLabel>What I work with</SectionLabel>
+          <h2 className="font-display font-bold text-3xl md:text-4xl mb-10">
+            Skills &<br />
+            <span className="text-accent">Expertise</span>
+          </h2>
+        </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-sm overflow-hidden">
-        {SKILLS.map(({ icon: Icon, label, items }, i) => (
-          <div
-            key={label}
-            className={`bg-ink p-8 group hover:bg-surface transition-colors duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{
-              transitionDelay: `${i * 80}ms`,
-              transitionDuration: "500ms",
-            }}
-          >
-            <div className="w-10 h-10 rounded-sm bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
-              <Icon size={18} className="text-accent" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {SKILLS.map(({ icon: Icon, label, items }, i) => (
+            <div
+              key={label}
+              className={`bg-surface/50 border border-white/10 p-7 group hover:border-accent/40 hover:-translate-y-1 transition-all duration-300 rounded-sm ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{
+                transitionDelay: `${i * 80}ms`,
+                transitionDuration: "500ms",
+              }}
+            >
+              <div className="w-10 h-10 rounded-sm bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
+                <Icon size={18} className="text-accent" />
+              </div>
+              <p className="font-display font-semibold text-paper mb-4 text-lg">
+                {label}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {items.map((item) => (
+                  <Badge key={item}>{item}</Badge>
+                ))}
+              </div>
             </div>
-            <p className="font-display font-semibold text-paper mb-4 text-lg">
-              {label}
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {items.map((item) => (
-                <Badge key={item}>{item}</Badge>
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -386,62 +390,64 @@ function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="px-6 md:px-16 lg:px-16 py-24 bg-ink/5"
+      className="px-6 md:px-16 lg:px-16 py-16 bg-ink/5"
     >
-      <div
-        className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <SectionLabel>Professional Experience</SectionLabel>
-        <h2 className="font-display font-bold text-3xl md:text-4xl mb-16">
-          Company Projects
-          <br />
-          <span className="text-accent">& Experience</span>
-        </h2>
-      </div>
+      <div className="max-w-6xl mx-auto">
+        <div
+          className={`transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <SectionLabel>Professional Experience</SectionLabel>
+          <h2 className="font-display font-bold text-3xl md:text-4xl mb-10">
+            Company Projects
+            <br />
+            <span className="text-accent">& Experience</span>
+          </h2>
+        </div>
 
-      <div className="space-y-8">
-        {EXPERIENCE.map((item, index) => (
-          <div
-            key={item.company}
-            className={`bg-ink border border-white/10 rounded-sm p-8 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{ transitionDelay: `${index * 80}ms` }}
-          >
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-              <div>
-                <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
-                  {item.company}
-                </p>
-                <h3 className="font-display font-semibold text-2xl text-paper mb-2">
-                  {item.role}
-                </h3>
-                <p className="text-muted text-sm">{item.period}</p>
+        <div className="space-y-6">
+          {EXPERIENCE.map((item, index) => (
+            <div
+              key={item.company}
+              className={`bg-ink border border-white/10 rounded-sm p-6 md:p-8 hover:border-accent/30 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                <div>
+                  <p className="font-mono text-xs text-accent tracking-[0.2em] uppercase mb-3">
+                    {item.company}
+                  </p>
+                  <h3 className="font-display font-semibold text-2xl text-paper mb-2">
+                    {item.role}
+                  </h3>
+                  <p className="text-muted text-sm">{item.period}</p>
+                </div>
+                <div className="text-left md:max-w-xs">
+                  <p className="text-paper font-semibold">Project</p>
+                  <p className="text-muted text-sm mt-1">{item.project}</p>
+                </div>
               </div>
-              <div className="text-right md:text-left">
-                <p className="text-paper font-semibold">Project</p>
-                <p className="text-muted text-sm mt-1">{item.project}</p>
+
+              <ul className="list-disc list-inside text-muted space-y-3 mb-6">
+                {item.details.map((detail, idx) => (
+                  <li key={idx}>{detail}</li>
+                ))}
+              </ul>
+
+              <div className="grid sm:grid-cols-2 gap-4 text-sm text-paper/80">
+                <div>
+                  <p className="font-semibold text-paper mb-2">Tech Stack</p>
+                  <p>{item.tech}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-paper mb-2">Tools</p>
+                  <p>{item.tools}</p>
+                </div>
               </div>
+
+              <p className="mt-6 text-sm text-accent">{item.footer}</p>
             </div>
-
-            <ul className="list-disc list-inside text-muted space-y-3 mb-6">
-              {item.details.map((detail, idx) => (
-                <li key={idx}>{detail}</li>
-              ))}
-            </ul>
-
-            <div className="grid sm:grid-cols-2 gap-4 text-sm text-paper/80">
-              <div>
-                <p className="font-semibold text-paper mb-2">Tech Stack</p>
-                <p>{item.tech}</p>
-              </div>
-              <div>
-                <p className="font-semibold text-paper mb-2">Tools</p>
-                <p>{item.tools}</p>
-              </div>
-            </div>
-
-            <p className="mt-6 text-sm text-accent">{item.footer}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -450,8 +456,8 @@ function Experience() {
 function About() {
   const [ref, visible] = useVisible();
   return (
-    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-16 py-24">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-16 items-center">
+    <section id="about" ref={ref} className="px-6 md:px-16 lg:px-16 py-16">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 items-start">
         <div
           className={`transition-all duration-600 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"} md:col-span-1`}
         >
@@ -488,7 +494,7 @@ function About() {
         <div
           className={`transition-all duration-600 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"} md:col-span-2`}
         >
-          <div className="bg-surface border border-white/5 rounded-sm p-8">
+          <div className="bg-surface border border-white/5 rounded-sm p-6 md:p-8">
             <p className="font-mono text-xs text-accent mb-6 tracking-widest">
               CORE STRENGTHS
             </p>
@@ -531,10 +537,10 @@ function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="px-6 md:px-16 lg:px-16 py-24 bg-surface/30"
+      className="px-6 md:px-16 lg:px-16 py-16 bg-surface/30"
     >
       <div
-        className={`max-w-2xl mx-auto text-center transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`max-w-3xl mx-auto text-center transition-all duration-600 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <SectionLabel>Let's connect</SectionLabel>
         <h2
@@ -551,7 +557,7 @@ function Contact() {
           together.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-3">
           <a
             href="mailto:prakashkeshari764@gmail.com"
             target="_blank"
@@ -621,34 +627,66 @@ function Footer() {
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  const navItems = ["Skills", "Experience", "About", "Contact"];
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-5 flex items-center justify-between transition-all duration-300 ${
-        scrolled ? "bg-ink/90 backdrop-blur-md border-b border-white/5" : ""
-      }`}
-    >
-      <a
-        href="#"
-        className="font-display font-bold text-paper hover:text-accent transition-colors"
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={`px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "bg-ink/90 backdrop-blur-md border-b border-white/5" : ""
+        }`}
       >
-        PK<span className="text-accent">.</span>
-      </a>
-      <nav className="hidden md:flex items-center gap-8">
-        {["Skills", "Experience", "About", "Contact"].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
-          >
-            {item}
-          </a>
-        ))}
+        <a
+          href="#"
+          className="font-display font-bold text-paper hover:text-accent transition-colors"
+        >
+          PK<span className="text-accent">.</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          className="md:hidden text-paper hover:text-accent transition-colors"
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      <nav
+        className={`md:hidden bg-ink/95 backdrop-blur-md border-b border-white/5 px-6 py-4 transition-all duration-200 ${
+          menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col gap-4">
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={() => setMenuOpen(false)}
+              className="font-mono text-xs tracking-widest text-muted hover:text-paper transition-colors uppercase"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
       </nav>
     </header>
   );
